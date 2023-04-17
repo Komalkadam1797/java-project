@@ -1,0 +1,2280 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class Mobileshop {
+}
+
+interface Payment {
+    public void getDetails();
+}
+
+class Devices implements Payment {
+    String Dev_Name;
+    String Dev_Colour;
+    double Dev_Price;
+    private String Dev_Owner_Name;
+    private long Owner_Mobile_Number;
+    private String Owner_EmailAdd;
+    private String Owner_AadharNo;
+    private String Owner_PanNo;
+
+    // getter and setter method
+
+    public void setDev_Owner_Name(String Dev_Owner_Name) {
+        this.Dev_Owner_Name = Dev_Owner_Name;
+    }
+
+    public String getDev_Owner_Name() {
+        return Dev_Owner_Name;
+    }
+
+    public void setOwner_Mobile_Number(long Owner_Mobile_Number) {
+        this.Owner_Mobile_Number = Owner_Mobile_Number;
+    }
+
+    public long getOwner_Mobile_Number() {
+        return Owner_Mobile_Number;
+    }
+
+    public void setOwner_EmailAdd(String Owner_EmailAdd) {
+        this.Owner_EmailAdd = Owner_EmailAdd;
+    }
+
+    public String getOwner_EmailAdd() {
+        return Owner_EmailAdd;
+    }
+
+    public void setOwner_AadharNo(String Owner_AadharNo) {
+        this.Owner_AadharNo = Owner_AadharNo;
+    }
+
+    public String getOwner_AadharNo() {
+        return Owner_AadharNo;
+    }
+
+    public void setOwner_PanNo(String Owner_PanNo) {
+        this.Owner_PanNo = Owner_PanNo;
+    }
+
+    public String getOwner_PanNo() {
+        return Owner_PanNo;
+    }
+
+    public void Pass(String Dev_Name, String Dev_Colour, double Dev_Price) {
+
+        this.Dev_Name = Dev_Name;
+        this.Dev_Colour = Dev_Colour;
+        this.Dev_Price = Dev_Price;
+    }
+
+    @Override
+    public void getDetails() {
+        System.out.println("Device Name           :" + Dev_Name);
+        System.out.println("Device Colour         :" + Dev_Colour);
+        System.out.println("Device Price          :" + Dev_Price);
+        System.out.println("Device Owner Name     :" + Dev_Owner_Name);
+        System.out.println("Owner Mobile Number    :" + Owner_Mobile_Number);
+        System.out.println("Owner Email Address    :" + Owner_EmailAdd);
+        System.out.println("Owner Aadhar Number    :" + Owner_AadharNo);
+        System.out.println("Owner Pan Number       :" + Owner_PanNo);
+    }
+
+    public void On() {
+        System.out.println("Switch On The Device");
+    }
+
+    public void Off() {
+        System.out.println("Switch Off The Device");
+    }
+
+    public void Function() {
+        System.out.println("Device Is Functional");
+    }
+
+}
+
+class Details {
+    int opt;
+    private static final String Dev = null;
+
+    public void Final_Details(String M_Name, String M_Colour, double M_Price) {
+        Devices DE = new Devices();
+        System.out.println("Choose Payment Option\n");
+        System.out.println("To Pay With Cheque Press 1");
+        System.out.println("To Pay With NEFT Press 2");
+        System.out.println("To Pay With EMI Press 3");
+
+        Scanner sc = new Scanner(System.in);
+
+        // Exception handling mechanism
+
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Payment Through Cheque");
+                break;
+
+            case 2:
+                System.out.println("You Have Choosen Payment option NEFT");
+                break;
+
+            case 3:
+                System.out.println("You Have Choosen Payment option EMI");
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Final_Details(M_Name, M_Colour, M_Price);
+                break;
+        }
+
+        System.out.println("Enter Your Name\n");
+        sc.nextLine();
+        String oname = sc.nextLine();
+        DE.setDev_Owner_Name(oname);
+        System.out.println();
+
+        System.out.println("Enter Your Mobile Number\n");
+        Long omobno = sc.nextLong();
+        DE.setOwner_Mobile_Number(omobno);
+        sc.nextLine();
+
+        System.out.println("Enter Your Email Id Number\n");
+        String oemail = sc.nextLine();
+        DE.setOwner_EmailAdd(oemail);
+        System.out.println();
+
+        System.out.println("Enter Your Aadhar Card Number\n");
+        String oaadharno = sc.nextLine();
+        DE.setOwner_AadharNo(oaadharno);
+        System.out.println();
+
+        System.out.println("Enter Your Pan Card Number\n");
+        String opanno = sc.nextLine();
+        DE.setOwner_PanNo(opanno);
+        System.out.println();
+
+        DE.Pass(M_Name, M_Colour, M_Price);
+        DE.getDetails();
+
+        System.out.println("");
+        System.out.println("Thank You For Purchasing a Device From Our Shope...!!!");
+        System.out.println("Have a great Day Sir/Ma'am");
+        System.out.println("");
+
+        // DE.On();
+        // DE.Off();
+        // DE.Function();
+
+    }
+}
+
+class Phones extends Devices {
+    int opt;
+
+    public void PBrand() {
+
+        // Upcasting and Downcasting
+
+        Devices d2 = new Nokia();
+        Nokia N1 = (Nokia) d2;
+
+        Devices S1 = new Samsung();
+        Samsung s = (Samsung) S1;
+
+        Devices V1 = new Vivo();
+        Vivo v = (Vivo) V1;
+
+        Devices O1 = new OnePlus();
+        OnePlus o = (OnePlus) O1;
+
+        Devices R1 = new MI();
+        MI r = (MI) R1;
+
+        Devices OP1 = new OPPO();
+        OPPO op = (OPPO) OP1;
+
+        Devices I1 = new APPLE();
+        APPLE i = (APPLE) I1;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Nokia");
+        System.out.println("Enter 2 for Samsung");
+        System.out.println("Enter 3 for Vivo");
+        System.out.println("Enter 4 for OnePlus");
+        System.out.println("Enter 5 for MI");
+        System.out.println("Enter 6 for OPPO");
+        System.out.println("Enter 7 for APPLE");
+
+        // Exception handling
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Nokia");
+                N1.Nokia_Phone();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Samsung");
+                s.SAM_Phone();
+                break;
+
+            case 3:
+                System.out.println("You Have Choosen Vivo");
+                v.VI_Phone();
+                break;
+            case 4:
+                System.out.println("You Have Choosen OnePlus");
+                o.ONE_Phone();
+                break;
+
+            case 5:
+                System.out.println("You Have Choosen Redmi-MI");
+                r.MI_Phone();
+                break;
+            case 6:
+                System.out.println("You Have Choosen OPPO");
+                op.OP_Phone();
+                break;
+            case 7:
+                System.out.println("You Have Choosen APPLE");
+                i.I_Phone();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                PBrand();
+                break;
+        }
+    }
+}
+
+class Nokia extends Phones {
+    int opt;
+
+    public void Nokia_Phone() {
+        // Upcasting-Downcasting for Nokia1
+        Devices M1 = new Mobile1();
+        Mobile1 m1 = (Mobile1) M1;
+
+        // Upcasting-Downcasting for Nokia2
+        Devices M2 = new Mobile2();
+        Mobile2 m2 = (Mobile2) M2;
+
+        // Upcasting-Downcasting for Nokia3
+        Devices M3 = new Mobile3();
+        Mobile3 m3 = (Mobile3) M3;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Nokia 6.1 Plus");
+        System.out.println("Enter 2 for Nokia 5.1");
+        System.out.println("Enter 3 for Nokia C2");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Nokia 6.1 Plus");
+                m1.Mobile1_Nokia();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Nokia 5.1");
+                m2.Mobile2_Nokia();
+                break;
+            case 3:
+                System.out.println("You Have Choosen Nokia C2");
+                m3.Mobile3_Nokia();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Nokia_Phone();
+                break;
+        }
+    }
+}
+
+class Mobile1 extends Nokia {
+    int opt;
+
+    public void Mobile1_Nokia() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Nokia 6.1 Plus Black");
+        System.out.println("Enter 2 for Nokia6.1 Plus Navy Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Nokia 6.1 Plus");
+                System.out.println("Main Cammera:16 MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Colour:Black");
+                System.out.println("Price:18,990");
+                System.out.println();
+                d.Final_Details("Nokia 6.1 Plus", "Black", 18990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Nokia 6.1 Plus");
+                System.out.println("Main Cammera:16 MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Colour:Navy Blue");
+                System.out.println("Price: 18,990");
+                d.Final_Details("Nokia 6.1 Plus", "Navy Blue", 18990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Mobile1_Nokia();
+                break;
+        }
+    }
+}
+
+class Mobile2 extends Nokia {
+    int opt;
+
+    public void Mobile2_Nokia() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Nokia 5.1 Black");
+        System.out.println("Enter 2 for Nokia 5.1  Navy Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Nokia 5.1");
+                System.out.println("Main Cammera:16 MP");
+                System.out.println("Front Cammera:8 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Colour:Black");
+                System.out.println("Price:11,990");
+                System.out.println();
+                d.Final_Details("Nokia 5.1", "Black", 9990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Nokia 5.1");
+                System.out.println("Main Cammera:16 MP");
+                System.out.println("Front Cammera:8 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Colour:Navy Blue");
+                System.out.println("Price: 11,990");
+                d.Final_Details("Nokia 5.1", "Navy Blue", 9990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Mobile2_Nokia();
+                break;
+        }
+    }
+}
+
+class Mobile3 extends Nokia {
+    int opt;
+
+    public void Mobile3_Nokia() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Nokia C2 Black");
+        System.out.println("Enter 2 for Nokia C2 Navy Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Nokia C2");
+                System.out.println("Main Cammera:8 MP");
+                System.out.println("Front Cammera:5 MP");
+                System.out.println("Mammory:32 GB");
+                System.out.println("Ram:3 GB");
+                System.out.println("Colour:Black");
+                System.out.println("Price:9,990");
+                System.out.println();
+                d.Final_Details("Nokia C2", "Black", 9990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Nokia 5.1");
+                System.out.println("Main Cammera:16 MP");
+                System.out.println("Front Cammera:8 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Colour:Navy Blue");
+                System.out.println("Price: 9,990");
+                d.Final_Details("Nokia C2", "Navy Blue", 9990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Mobile3_Nokia();
+                break;
+        }
+    }
+}
+
+class Samsung extends Phones {
+    int opt;
+
+    public void SAM_Phone() {
+
+        // Upcasting-Downcasting for
+        Devices S2 = new sMobile1();
+        sMobile1 s1 = (sMobile1) S2;
+        // Upcasting-Downcasting for
+        Devices S3 = new sMobile2();
+        sMobile2 s2 = (sMobile2) S3;
+        // Upcasting-Downcasting for
+        Devices S4 = new sMobile3();
+        sMobile3 s3 = (sMobile3) S4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Samsung Galaxy M20");
+        System.out.println("Enter 2 for Samsung Galaxy S20");
+        System.out.println("Enter 3 for Samsung Galaxy S21");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Samsung Galaxy M20");
+                s1.sMobile1_SAM();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Samsung Galaxy S20");
+                s2.sMobile2_SAM();
+                break;
+            case 3:
+                System.out.println("You Have Choosen Samsung Galaxy S21");
+                s3.sMobile3_SAM();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                SAM_Phone();
+                break;
+        }
+    }
+}
+
+class sMobile1 extends Samsung {
+    int opt;
+
+    public void sMobile1_SAM() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Samsung Galaxy M20 Black");
+        System.out.println("Enter 2 for Samsung Galaxy M20 Navy Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Samsung Galaxy M20");
+                System.out.println("Main Cammera:13 MP");
+                System.out.println("Front Cammera:8 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Colour: Black");
+                System.out.println("Price:12,990");
+                System.out.println();
+                d.Final_Details("Samsung Galaxy M20", "Black", 12990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Samsung Galaxy M20");
+                System.out.println("Main Cammera:13 MP");
+                System.out.println("Front Cammera:8 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Colour:Navy Blue");
+                System.out.println("Price: 12,990");
+                d.Final_Details("Samsung Galaxy M20", "Navy Blue", 12990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                sMobile1_SAM();
+                break;
+        }
+    }
+}
+
+class sMobile2 extends Samsung {
+    int opt;
+
+    public void sMobile2_SAM() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Samsung Galaxy S20 Green");
+        System.out.println("Enter 2 for Samsung Galaxy S20 Cloud Navy");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Samsung Galaxy S20 Green");
+                System.out.println("Main Cammera:12MP + 12MP UltraWide + 8MP TelePhoto");
+                System.out.println("Front Cammera:32 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Colour:Green");
+                System.out.println("Price:36,990");
+                System.out.println();
+                d.Final_Details("Samsung Galaxy S20", "Green", 36990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Samsung Galaxy S20 ");
+                System.out.println("Main Cammera:12MP + 12MP UltraWide + 8MP TelePhoto");
+                System.out.println("Front Cammera:32 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Colour:Cloud Navy");
+                System.out.println("Price:36,990");
+                System.out.println();
+                d.Final_Details("Samsung Galaxy S20", "Cloud Navy", 36990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                sMobile2_SAM();
+                break;
+        }
+    }
+}
+
+class sMobile3 extends Samsung {
+    int opt;
+
+    public void sMobile3_SAM() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Samsung Galaxy S21 Green");
+        System.out.println("Enter 2 for Samsung Galaxy S21 Lavender");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Samsung Galaxy S21 ");
+                System.out.println("Main Cammera:12MP + 12MP UltraWide + 8MP TelePhoto");
+                System.out.println("Front Cammera:32 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:49,990");
+                System.out.println("Colour: Green");
+                System.out.println();
+                d.Final_Details("Samsung Galaxy S21", "Green", 49990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Samsung Galaxy S21 Cloud Navy");
+                System.out.println("Main Cammera:12MP + 12MP UltraWide + 8MP TelePhoto");
+                System.out.println("Front Cammera:32 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:49,990");
+                System.out.println("Colour:Lavender");
+                System.out.println();
+                d.Final_Details("Samsung Galaxy S21", "Lavender", 49990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                sMobile3_SAM();
+                break;
+        }
+    }
+}
+
+class Vivo extends Phones {
+    int opt;
+
+    // Upcasting & Downcasting
+    public void VI_Phone() {
+        Devices V2 = new vMobile1();
+        vMobile1 v1 = (vMobile1) V2;
+
+        Devices V3 = new vMobile2();
+        vMobile2 v2 = (vMobile2) V3;
+
+        Devices V4 = new vMobile3();
+        vMobile3 v3 = (vMobile3) V4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Vivo Y21");
+        System.out.println("Enter 2 for Vivo V23 5G");
+        System.out.println("Enter 3 for Vivo Y75");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+            System.out.println();
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Vivo Y21");
+                v1.vMobile1_VI();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Vivo V23 5G");
+                v2.vMobile2_VI();
+                break;
+            case 3:
+                System.out.println("You Have Choosen Vivo Y75");
+                v3.vMobile3_VI();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                VI_Phone();
+                break;
+        }
+    }
+}
+
+class vMobile1 extends Vivo {
+    int opt;
+
+    public void vMobile1_VI() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Vivo Y21 Diamond Blue");
+        System.out.println("Enter 2 for Vivo Y21 Diamond Glow");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Vivo Y21");
+                System.out.println("Main Cammera:32MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Price:13,490");
+                System.out.println("Colour:Diamond Blue");
+                System.out.println();
+                d.Final_Details("Vivo Y21", "Diamond Blue", 13490);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Vivo Y21 ");
+                System.out.println("Main Cammera:32MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Price:13,490");
+                System.out.println("Colour:Diamond Glow");
+                System.out.println();
+                d.Final_Details("Vivo Y21", "Diamond Glow", 13490);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                vMobile1_VI();
+                break;
+        }
+    }
+}
+
+class vMobile2 extends Vivo {
+    int opt;
+
+    public void vMobile2_VI() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Vivo V23 5G Stardust Black");
+        System.out.println("Enter 2 for Vivo V23 5G Sunshine Gold");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Vivo V23 5G Stardust Black");
+                System.out.println("Main Cammera:64MP + 8MP + 2MP");
+                System.out.println("Front Cammera:50MP + 8MP MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:29,990");
+                System.out.println("Colour:Stardust Black");
+                System.out.println();
+                d.Final_Details("Vivo V23 5G", "Stardust Black", 29990);
+
+                break;
+            case 2:
+                System.out.println("Mobile Name:Vivo V23 5G");
+                System.out.println("Main Cammera:64MP + 8MP + 2MP");
+                System.out.println("Front Cammera:50MP + 8MP MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:29,990");
+                System.out.println("Colour:Sunshine Gold");
+                System.out.println();
+                d.Final_Details("Vivo V23 5G", "Sunshine Gold", 29990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                vMobile2_VI();
+                break;
+        }
+    }
+}
+
+class vMobile3 extends Vivo {
+    int opt;
+
+    public void vMobile3_VI() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Vivo Y75 Dancing Waves");
+        System.out.println("Enter 2 for Vivo Y75 Moonlight Shadow");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Vivo Y75 ");
+                System.out.println("Main Cammera:64 MP");
+                System.out.println("Front Cammera:32 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:20,990");
+                System.out.println("Colour:Dancing Waves");
+                System.out.println();
+                d.Final_Details("Vivo Y75", "Dancing Waves", 20990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Vivo Y75 ");
+                System.out.println("Main Cammera:64 MP");
+                System.out.println("Front Cammera:32 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:20,990");
+                System.out.println("Colour:Moonlight Shadow");
+                System.out.println();
+                d.Final_Details("Vivo Y75", "Moonlight Shadow", 20990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                vMobile3_VI();
+                break;
+        }
+    }
+}
+
+class OnePlus extends Phones {
+
+    int opt;
+    // Upcasting & Downcasting
+
+    public void ONE_Phone() {
+        Devices O2 = new oMobile1();
+        oMobile1 o1 = (oMobile1) O2;
+
+        Devices O3 = new oMobile2();
+        oMobile2 o2 = (oMobile2) O3;
+
+        Devices O4 = new oMobile3();
+        oMobile3 o3 = (oMobile3) O4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OnePlus Nord CE");
+        System.out.println("Enter 2 for OnePlus 10T");
+        System.out.println("Enter 3 for OnePlus 10R");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen OnePlus Nord CE");
+                o1.oMobile1_One();
+                break;
+            case 2:
+                System.out.println("You Have Choosen OnePlus 10T");
+                o2.oMobile2_One();
+                break;
+            case 3:
+                System.out.println("You Have Choosen OnePlus 10R");
+                o3.oMobile3_One();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                ONE_Phone();
+        }
+    }
+}
+
+class oMobile1 extends OnePlus {
+    int opt;
+
+    public void oMobile1_One() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OnePlus Nord CE Bahamas Blue");
+        System.out.println("Enter 2 for OnePlus Nord CE Grey Mirror");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:OnePlus Nord CE Bahamas Blue");
+                System.out.println("Main Cammera:64 MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:24,990");
+                System.out.println("Colour:Bahamas Blue");
+                System.out.println();
+                d.Final_Details("OnePlus Nord CE", "Bahamas Blue", 24990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:OnePlus Nord CE Gray Mirror");
+                System.out.println("Main Cammera:64 MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:24,990");
+                System.out.println("Colour:Grey Mirror");
+                System.out.println();
+                d.Final_Details("OnePlus Nord CE", "Gray Mirror", 24990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                oMobile1_One();
+        }
+    }
+}
+
+class oMobile2 extends OnePlus {
+    int opt;
+
+    public void oMobile2_One() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OnePlus 10T Jade Green");
+        System.out.println("Enter 2 for OnePlus 10T Moonstone Black");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:OnePlus 10T Jade Green");
+                System.out.println("Main Cammera:50MP + 8MP + 2MP");
+                System.out.println("Front Cammera:25 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:49,990");
+                System.out.println("Colour:Jade Green");
+                System.out.println();
+                d.Final_Details("OnePlus 10T", "Jade Green", 49990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:OnePlus 10T Moonstone Black");
+                System.out.println("Main Cammera:50MP + 8MP + 2MP");
+                System.out.println("Front Cammera:25 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:49,990");
+                System.out.println("Colour: Moonstone Black");
+                System.out.println();
+                d.Final_Details("OnePlus 10T", "Moonstone Black", 49990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                oMobile2_One();
+        }
+    }
+}
+
+class oMobile3 extends OnePlus {
+    int opt;
+
+    public void oMobile3_One() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OnePlus 10R Silver");
+        System.out.println("Enter 2 for OnePlus 10R Forest Green");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:OnePlus 10R Silver");
+                System.out.println("Main Cammera:50MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:34,990");
+                System.out.println("Colour: Silver");
+                System.out.println();
+                d.Final_Details("OnePlus 10R", "Silver", 34990);
+                break;
+            case 2:
+                System.out.println("Mobile Name:OnePlus 10R Forest Green");
+                System.out.println("Main Cammera:50MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:34,990");
+                System.out.println("Colour:Forest Green");
+                System.out.println();
+                d.Final_Details("OnePlus 10R", "Forest Green", 34990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                oMobile3_One();
+        }
+    }
+}
+
+class MI extends Phones {
+
+    int opt;
+
+    // Upcasting & Downcasting
+    public void MI_Phone() {
+        Devices R2 = new mMobile1();
+        mMobile1 r1 = (mMobile1) R2;
+
+        Devices R3 = new mMobile2();
+        mMobile2 r2 = (mMobile2) R3;
+
+        Devices R4 = new mMobile3();
+        mMobile3 r3 = (mMobile3) R4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Redmi Note 11");
+        System.out.println("Enter 2 for Redmi Note 10S");
+        System.out.println("Enter 3 for Mi 11X");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Redmi Note 11");
+                r1.rMobile1_MI();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Redmi Note 10S");
+                r2.rMobile2_MI();
+                break;
+            case 3:
+                System.out.println("You Have Choosen Mi 11X");
+                r3.rMobile3_MI();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                MI_Phone();
+        }
+    }
+}
+
+class mMobile1 extends MI {
+    int opt;
+
+    public void rMobile1_MI() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Redmi Note 11 Space Black");
+        System.out.println("Enter 2 for Redmi Note 11 Horizon Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Redmi Note 11 Space Black");
+                System.out.println("Main Cammera:50MP + 8MP + 2MP + 2MP");
+                System.out.println("Front Cammera:13 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Price:12,739");
+                System.out.println("Colour: Space Black");
+                System.out.println();
+                d.Final_Details("Redmi Note 11", "Space Black", 12739);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Redmi Note 11 Horizon Blue");
+                System.out.println("Main Cammera:50MP + 8MP + 2MP + 2MP");
+                System.out.println("Front Cammera:13 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Ram:4 GB");
+                System.out.println("Price:12,739");
+                System.out.println("Colour:Horizon Blue");
+                System.out.println();
+                d.Final_Details("Redmi Note 11", "Shadow Black", 12739);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                rMobile1_MI();
+        }
+    }
+}
+
+class mMobile2 extends MI {
+    int opt;
+
+    public void rMobile2_MI() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Redmi Note 10S Shadow Black");
+        System.out.println("Enter 2 for Redmi Note 10S Deep Sea Blue");
+        System.out.println("Enter 3 for Redmi Note 10S Frost White");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:Redmi Note 10S Shadow Black");
+                System.out.println("Main Cammera:64MP + 8MP + 2MP");
+                System.out.println("Front Cammera:13 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Price:17,990");
+                System.out.println("Colour:Shadow Black");
+                System.out.println();
+                d.Final_Details("Redmi Note 10S", "Shadow Black", 17900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Redmi Note 10S Deep Sea Blue");
+                System.out.println("Main Cammera:64MP + 8MP + 2MP");
+                System.out.println("Front Cammera:13 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Price:17,990");
+                System.out.println("Colour:Deep Sea Blue");
+                System.out.println();
+                d.Final_Details("Redmi Note 10S", "Deep Sea Blue", 17900);
+                break;
+            case 3:
+                System.out.println("Mobile Name:Redmi Note 10S Frost White");
+                System.out.println("Main Cammera:64MP + 8MP + 2MP");
+                System.out.println("Front Cammera:13 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Price:17,990");
+                System.out.println("Colour:Frost White");
+                System.out.println();
+                d.Final_Details("Redmi Note 10S", "Frost White", 17900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                rMobile2_MI();
+
+        }
+    }
+}
+
+class mMobile3 extends MI {
+    int opt;
+
+    public void rMobile3_MI() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Mi 11X Cosmic Black");
+        System.out.println("Enter 2 for Mi 11X Celestial Silver");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: Mi 11X Cosmic Black");
+                System.out.println("Main Cammera:48 MP + 5 MP + 2 MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Price:27990");
+                System.out.println("Colour:Cosmic Black");
+                System.out.println();
+                d.Final_Details("Mi 11X", "Cosmic Black", 27900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Mi 11X Celestial Silver");
+                System.out.println("Main Cammera:48 MP + 5 MP + 2 MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:6 GB");
+                System.out.println("Price:27990");
+                System.out.println("Colour:Celestial Silver");
+                System.out.println();
+                d.Final_Details("Mi 11X", "Celestial Silver", 27900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                rMobile3_MI();
+                break;
+        }
+    }
+
+}
+
+class OPPO extends Phones {
+
+    int opt;
+
+    // Upcasting & Downcasting
+    public void OP_Phone() {
+        Devices OP2 = new opMobile1();
+        opMobile1 op1 = (opMobile1) OP2;
+
+        Devices OP3 = new opMobile2();
+        opMobile2 op2 = (opMobile2) OP3;
+
+        Devices OP4 = new opMobile3();
+        opMobile3 op3 = (opMobile3) OP4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OPPO F21 Pro");
+        System.out.println("Enter 2 for OPPO A96");
+        System.out.println("Enter 3 for OPPO F19 Pro+");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen OPPO F21 Pro");
+                op1.opMobile1_OP();
+                break;
+            case 2:
+                System.out.println("You Have Choosen OPPO A96");
+                op2.opMobile2_OP();
+                break;
+            case 3:
+                System.out.println("You Have Choosen OPPO F19 Pro+");
+                op3.opMobile3_OP();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                OP_Phone();
+                break;
+        }
+    }
+}
+
+class opMobile1 extends OPPO {
+    int opt;
+
+    public void opMobile1_OP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OPPO F21 Pro Cosmic Black");
+        System.out.println("Enter 2 for OPPO F21 Pro Rainbow Spectrum");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name:OPPO F21 Pro");
+                System.out.println("Main Cammera:64MP + 2MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:22990");
+                System.out.println("Colour:Cosmic Black");
+                System.out.println();
+                d.Final_Details("OPPO F21 Pro", "Cosmic Black", 22900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:OPPO F21 Pro ");
+                System.out.println("Main Cammera:64MP + 2MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:22990");
+                System.out.println("Colour:Rainbow Spectrum");
+                System.out.println();
+                d.Final_Details("OPPO F21 Pro", "Rainbow Spectrum", 22900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                opMobile1_OP();
+                break;
+        }
+    }
+}
+
+class opMobile2 extends OPPO {
+    int opt;
+
+    public void opMobile2_OP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OPPO A96 Sunset Blue");
+        System.out.println("Enter 2 for OPPO A96 Starry Black");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: OPPO A96 ");
+                System.out.println("Main Cammera:50MP + 2MP");
+                System.out.println("Front Cammera:50MP + 8MP MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:18,990");
+                System.out.println("Colour: Sunset Blue");
+                System.out.println();
+                d.Final_Details("OPPO A96 ", "Sunset Blue", 18900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:OPPO A96 ");
+                System.out.println("Main Cammera:50MP + 2MP");
+                System.out.println("Front Cammera:50MP + 8MP MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:18,990");
+                System.out.println("Colour: Starry Black");
+                System.out.println();
+                d.Final_Details("OPPO A96 ", "Starry Black", 18900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                opMobile2_OP();
+                break;
+        }
+    }
+}
+
+class opMobile3 extends OPPO {
+    int opt;
+
+    public void opMobile3_OP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for OPPO F19 Pro+ Fluid Black");
+        System.out.println("Enter 2 for OPPO F19 Pro+ Moonlight Shadow");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: OPPO F19 Pro+ Fluid Black");
+                System.out.println("Main Cammera:48MP + 8MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:20,990");
+                System.out.println("Colour:Fluid Black");
+                System.out.println();
+                d.Final_Details("OPPO F19 Pro+", "Fluid Black", 20900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:OPPO F19 Pro+ Moonlight Shadow");
+                System.out.println("Main Cammera:48MP + 8MP + 2MP");
+                System.out.println("Front Cammera:16 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Ram:8 GB");
+                System.out.println("Price:20,990");
+                System.out.println("Colour: Moonlight Shadow");
+                System.out.println();
+                d.Final_Details("OPPO F19 Pro+", "Moonlight Shadow", 20900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                opMobile3_OP();
+                break;
+        }
+    }
+}
+
+class APPLE extends Phones {
+
+    int opt;
+
+    // Upcasting & Downcasting
+    public void I_Phone() {
+        Devices I2 = new iMobile1();
+        iMobile1 i1 = (iMobile1) I2;
+
+        Devices I3 = new iMobile2();
+        iMobile2 i2 = (iMobile2) I3;
+
+        Devices I4 = new iMobile3();
+        iMobile3 i3 = (iMobile3) I4;
+
+        Devices I5 = new iMobile4();
+        iMobile4 i4 = (iMobile4) I5;
+
+        Devices I6 = new iMobile5();
+        iMobile5 i5 = (iMobile5) I6;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Apple iPhone XR");
+        System.out.println("Enter 2 for Apple iPhone SE");
+        System.out.println("Enter 3 for Apple iPhone 11");
+        System.out.println("Enter 4 for Apple iPhone 12");
+        System.out.println("Enter 5 for Apple iPhone 13");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Apple iPhone XR");
+                i1.iMobile1_iP();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Apple iPhone SE");
+                i2.iMobile2_iP();
+                break;
+            case 3:
+                System.out.println("You Have Choosen Apple iPhone 11");
+                i3.iMobile3_iP();
+                break;
+            case 4:
+                System.out.println("You Have Choosen Apple iPhone 12");
+                i4.iMobile4_iP();
+                break;
+            case 5:
+                System.out.println("You Have Choosen Apple iPhone 13");
+                i5.iMobile5_iP();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                I_Phone();
+                break;
+        }
+    }
+}
+
+class iMobile1 extends APPLE {
+    int opt;
+
+    public void iMobile1_iP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Apple iPhone XR RED");
+        System.out.println("Enter 2 for Apple iPhone XR White");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: Apple iPhone XR RED");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:7 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Price:42,490");
+                System.out.println("Colour: RED");
+                System.out.println();
+                d.Final_Details("Apple iPhone Xr", "RED", 42900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Apple iPhone XR White");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:7 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Price:42,490");
+                System.out.println("Colour:White");
+                System.out.println();
+                d.Final_Details("Apple iPhone Xr", "White", 42900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                iMobile1_iP();
+                break;
+        }
+    }
+}
+
+class iMobile2 extends APPLE {
+    int opt;
+
+    public void iMobile2_iP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Apple iPhone SE RED");
+        System.out.println("Enter 2 for Apple iPhone SE Starlight");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: Apple iPhone SE RED");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:7 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Price:48,490");
+                System.out.println("Colour: RED");
+                System.out.println();
+                d.Final_Details("Apple iPhone SE", "RED", 48900);
+                break;
+            case 2:
+                System.out.println("Mobile Name:Apple iPhone SE Starlight");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:7 MP");
+                System.out.println("Mammory:128 GB");
+                System.out.println("Price:48,490");
+                System.out.println("Colour:Starlight");
+                System.out.println();
+                d.Final_Details("Apple iPhone SE", "Starlight", 48900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                iMobile2_iP();
+                break;
+        }
+    }
+}
+
+class iMobile3 extends APPLE {
+    int opt;
+
+    public void iMobile3_iP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Apple iPhone 11 Black");
+        System.out.println("Enter 2 for Apple iPhone 11 Silver");
+        System.out.println("Enter 3 for Apple iPhone 11 Green");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: Apple iPhone 11");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:46,490");
+                System.out.println("Colour: Black");
+                System.out.println();
+                d.Final_Details("Apple iPhone 11", "Black", 46900);
+                break;
+            case 2:
+                System.out.println("Mobile Name: Apple iPhone 11");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:46,490");
+                System.out.println("Colour: Silver");
+                d.Final_Details("Apple iPhone 11", "Silver", 46900);
+                break;
+            case 3:
+                System.out.println("Mobile Name: Apple iPhone 11");
+                System.out.println("Main Cammera:12 MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:46,490");
+                System.out.println("Colour: Green");
+
+                d.Final_Details("Apple iPhone 11", "Green", 46900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                iMobile3_iP();
+                break;
+        }
+    }
+}
+
+class iMobile4 extends APPLE {
+    int opt;
+
+    public void iMobile4_iP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Apple iPhone 12 Black");
+        System.out.println("Enter 2 for Apple iPhone 12 RED");
+        System.out.println("Enter 3 for Apple iPhone 12 White");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: Apple iPhone 12");
+                System.out.println("Main Cammera:12MP + 12MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:53,990");
+                System.out.println("Colour: Black");
+                System.out.println();
+                d.Final_Details("Apple iPhone 12", "Black", 53900);
+                break;
+            case 2:
+                System.out.println("Mobile Name: Apple iPhone 12");
+                System.out.println("Main Cammera:12MP + 12MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:53,990");
+                System.out.println("Colour: RED");
+                System.out.println();
+                d.Final_Details("Apple iPhone 12", "RED", 53900);
+                break;
+            case 3:
+                System.out.println("Mobile Name: Apple iPhone 12");
+                System.out.println("Main Cammera:12MP + 12MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:53,990");
+                System.out.println("Colour: White");
+                System.out.println();
+                d.Final_Details("Apple iPhone 12", "White", 53900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                iMobile4_iP();
+        }
+    }
+}
+
+class iMobile5 extends APPLE {
+    int opt;
+
+    public void iMobile5_iP() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Apple iPhone 13 Black");
+        System.out.println("Enter 2 for Apple iPhone 13 RED");
+        System.out.println("Enter 3 for Apple iPhone 13 Green");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Mobile Name: Apple iPhone 13");
+                System.out.println("Main Cammera:12MP + 12MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:256 GB");
+                System.out.println("Price:76,990");
+                System.out.println("Colour: Black");
+                System.out.println();
+                d.Final_Details("Apple iPhone 13", "Black", 99900);
+                break;
+            case 2:
+                System.out.println("Mobile Name: Apple iPhone 13");
+                System.out.println("Main Cammera:12MP + 12MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:256 GB");
+                System.out.println("Price:76,990");
+                System.out.println("Colour:RED");
+                System.out.println();
+                d.Final_Details("Apple iPhone 13", "RED", 99900);
+                break;
+            case 3:
+                System.out.println("Mobile Name: Apple iPhone 13");
+                System.out.println("Main Cammera:12MP + 12MP");
+                System.out.println("Front Cammera:12 MP");
+                System.out.println("Mammory:64 GB");
+                System.out.println("Price:99,900");
+                System.out.println("Colour: Green");
+                System.out.println();
+                d.Final_Details("Apple iPhone 13", "Green", 99900);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                iMobile5_iP();
+                break;
+        }
+    }
+}
+
+class SmartWatch extends Devices {
+
+    int opt;
+
+    public void SWatch() {
+
+        // Upcasting & Downcasting
+        Devices B1 = new BoAt();
+        BoAt b = (BoAt) B1;
+
+        Devices NO1 = new NOISE();
+        NOISE No = (NOISE) NO1;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for BoAt");
+        System.out.println("Enter 2 for NOISE");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen BoAt");
+                b.Boat_watch();
+                break;
+            case 2:
+                System.out.println("You Have Choosen NOISE");
+                No.Noise_watch();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                SWatch();
+                break;
+        }
+    }
+}
+
+class BoAt extends SmartWatch {
+    int opt;
+
+    public void Boat_watch() {
+
+        // Upcasting & Downcasting
+        Devices B2 = new bWatch1();
+        bWatch1 b1 = (bWatch1) B2;
+
+        Devices B3 = new bWatch2();
+        bWatch2 b2 = (bWatch2) B3;
+
+        Devices B4 = new bWatch3();
+        bWatch3 b3 = (bWatch3) B4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for boAt Wave Lite");
+        System.out.println("Enter 2 for boAt Xtend(With Alexa)");
+        System.out.println("Enter 3 for boAt Wave Call");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen boAt Wave Lite1");
+                b1.bWatch1_BT();
+                break;
+            case 2:
+                System.out.println("You Have Choosen boAt Xtend(With Alexa)");
+                b2.bWatch2_BT();
+                break;
+            case 3:
+                System.out.println("You Have Choosen boAt Wave Call");
+                b3.bWatch3_BT();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Boat_watch();
+                break;
+        }
+    }
+}
+
+class bWatch1 extends BoAt {
+    int opt;
+
+    public void bWatch1_BT() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for boAt Wave Lite Black");
+        System.out.println("Enter 2 for boAt Wave Lite RED");
+        System.out.println("Enter 3 for boAt Wave Lite Deep Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Watch Name: boAt Wave Lite");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:140+ Watch Faces");
+                // System.out.println("Watch Sport Mode:");
+                System.out.println("Watch Price:16,90");
+                System.out.println("Colour:Black");
+                System.out.println();
+                d.Final_Details("boAt Wave Lite", "Black", 1690);
+                break;
+            case 2:
+                System.out.println("Watch Name: boAt Wave Lite");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:140+ Watch Faces");
+                // System.out.println("Watch Sport Mode:");
+                System.out.println("Watch Price:16,90");
+                System.out.println("Colour:RED");
+                System.out.println();
+                d.Final_Details("boAt Wave Lite", "RED", 1690);
+                break;
+            case 3:
+                System.out.println("Watch Name: boAt Wave Lite");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:140+ Watch Faces");
+                // System.out.println("Watch Sport Mode:");
+                System.out.println("Watch Price:1,690");
+                System.out.println("Colour:Deep Blue");
+                System.out.println();
+                d.Final_Details("boAt Wave Lite", "Deep Blue", 1690);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                bWatch1_BT();
+                break;
+        }
+    }
+}
+
+class bWatch2 extends BoAt {
+    int opt;
+
+    public void bWatch2_BT() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for boAt Xtend(With Alexa) Charcoal Black");
+        System.out.println("Enter 2 for boAt Xtend(With Alexa) Olive Green");
+        System.out.println("Enter 3 for boAt Xtend(With Alexa) Deep Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Watch Name:boAt Xtend(With Alexa)");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:Multiple Watch Faces");
+                // System.out.println("Watch Sport Mode:");
+                System.out.println("Watch Price:2,990");
+                System.out.println("Colour:Charcoal Black");
+                System.out.println();
+                d.Final_Details("boAt Xtend(With Alexa)", "Charcoal Black", 2990);
+                break;
+            case 2:
+                System.out.println("Watch Name:boAt Xtend(With Alexa)");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:Multiple Watch Faces");
+                // System.out.println("Watch Sport Mode:");
+                System.out.println("Watch Price:2,990");
+                System.out.println("Colour:Olive Green");
+                System.out.println();
+                d.Final_Details("boAt Xtend(With Alexa)", "Olive Green", 2990);
+                break;
+            case 3:
+                System.out.println("Watch Name:boAt Xtend(With Alexa)");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:Multiple Watch Faces");
+                // System.out.println("Watch Sport Mode:");
+                System.out.println("Watch Price:2,990");
+                System.out.println("Colour:Deep Blue");
+                System.out.println();
+                d.Final_Details("boAt Xtend(With Alexa)", "Deep Blue", 2990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                bWatch2_BT();
+                break;
+        }
+    }
+
+}
+
+class bWatch3 extends BoAt {
+    int opt;
+
+    public void bWatch3_BT() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for boAt Wave Call Active Black");
+        System.out.println("Enter 2 for boAt Wave Call Scarlet Red");
+        System.out.println("Enter 3 for boAt Wave Call Deep Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Watch Name:boAt Wave Call");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:150+ Watch Faces");
+                System.out.println("Watch Sport Mode:Multiple");
+                System.out.println("Watch Price:3,990");
+                System.out.println("Colour:Active Black");
+                System.out.println();
+                d.Final_Details("boAt Wave Call", "Active Black", 3990);
+                break;
+            case 2:
+                System.out.println("Watch Name:boAt Wave Call");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:150+ Watch Faces");
+                System.out.println("Watch Sport Mode:Multiple");
+                System.out.println("Watch Price:3,990");
+                System.out.println("Colour:Scarlet Red");
+                System.out.println();
+                d.Final_Details("boAt Wave Call", "Scarlet Red", 3990);
+                break;
+
+            case 3:
+                System.out.println("Watch Name:boAt Wave Call");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:150+ Watch Faces");
+                System.out.println("Watch Sport Mode:Multiple");
+                System.out.println("Watch Price:3,990");
+                System.out.println("Colour:Deep Blue");
+                d.Final_Details("boAt Wave Call", "Deep Blue", 3990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                bWatch3_BT();
+                break;
+        }
+    }
+}
+
+class NOISE extends SmartWatch {
+    int opt;
+
+    public void Noise_watch() {
+
+        // Upcasting & Downcasting
+        Devices NO2 = new NoWatch1();
+        NoWatch1 No1 = (NoWatch1) NO2;
+
+        Devices NO3 = new NoWatch2();
+        NoWatch2 No2 = (NoWatch2) NO3;
+
+        Devices NO4 = new NoWatch3();
+        NoWatch3 No3 = (NoWatch3) NO4;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Noise ColorFit Ultra 2 Buzz");
+        System.out.println("Enter 2 for Noise ColorFit Pro 4");
+        System.out.println("Enter 3 for Noise ColorFit Pulse");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+        switch (opt) {
+            case 1:
+                System.out.println("You Have Choosen Noise ColorFit Ultra 2 Buzz");
+                No1.NoWatch1_NO();
+                break;
+            case 2:
+                System.out.println("You Have Choosen Noise ColorFit Pro 4");
+                No2.NoWatch2_NO();
+                break;
+            case 3:
+                System.out.println("You Have Choosen Noise ColorFit Pulse");
+                No3.NoWatch3_NO();
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                Noise_watch();
+                break;
+        }
+    }
+}
+
+class NoWatch1 extends NOISE {
+    int opt;
+
+    public void NoWatch1_NO() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Noise ColorFit Ultra 2 Buzz Jet Black");
+        System.out.println("Enter 2 for Noise ColorFit Ultra 2 Buzz Champagne Grey");
+        System.out.println("Enter 3 for Noise ColorFit Ultra 2 Buzz Deep Blue");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Watch Name:Noise ColorFit Ultra 2 Buzz");
+                System.out.println("Watch Display:1.72INCH AMOLD LCD");
+                System.out.println("Watch Display Style:100+ Watch Faces");
+                System.out.println("Watch Mode:Sports Modes, Bluetooth Calling");
+                System.out.println("Watch Price:3,990");
+                System.out.println("Colour:Jet Black");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Ultra 2 Buzz", "Jet Black", 3990);
+                break;
+            case 2:
+                System.out.println("Watch Name:Noise ColorFit Ultra 2 Buzz");
+                System.out.println("Watch Display:1.72INCH AMOLD LCD");
+                System.out.println("Watch Display Style:100+ Watch Faces");
+                System.out.println("Watch Mode:Sports Modes, Bluetooth Calling");
+                System.out.println("Watch Price:3,990");
+                System.out.println("Colour:Champagne Grey");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Ultra 2 Buzz", "Champagne Grey", 3990);
+                break;
+            case 3:
+                System.out.println("Watch Name:Noise ColorFit Ultra 2 Buzz");
+                System.out.println("Watch Display:1.72INCH AMOLD LCD");
+                System.out.println("Watch Display Style:100+ Watch Faces");
+                System.out.println("Watch Mode:Sports Modes, Bluetooth Calling");
+                System.out.println("Watch Price:3,990");
+                System.out.println("Colour:Vintage Brown");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Ultra 2 Buzz", "Vintage Brown", 3990);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                NoWatch1_NO();
+                break;
+        }
+    }
+}
+
+class NoWatch2 extends NOISE {
+    int opt;
+
+    public void NoWatch2_NO() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Noise ColorFit Pro 4 Charcoal Black");
+        System.out.println("Enter 2 for Noise ColorFit Pro 4 Mint Green");
+        System.out.println("Enter 3 for Noise ColorFit Pro 4 Deep Wine");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+            System.out.println();
+        }
+        switch (opt) {
+            case 1:
+                System.out.println("Watch Name:Noise ColorFit Pro 4");
+                System.out.println("Watch Display:1.72INCH  TruView LCD");
+                System.out.println("Watch Display Style:100+ Watch Faces");
+                System.out.println("Watch Mode:100+ Sports Modes, Bluetooth Calling");
+                System.out.println("Watch Price:3,490");
+                System.out.println("Colour:Charcoal Black");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Pro 4", "Charcoal Black", 3490);
+                break;
+            case 2:
+                System.out.println("Watch Name:Noise ColorFit Pro 4");
+                System.out.println("Watch Display:1.72INCH  TruView LCD");
+                System.out.println("Watch Display Style:100+ Watch Faces");
+                System.out.println("Watch Mode:100+ Sports Modes, Bluetooth Calling");
+                System.out.println("Watch Price:3,490");
+                System.out.println("Colour:Mint Green");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Pro 4", "Mint Green", 3490);
+                break;
+            case 3:
+                System.out.println("Watch Name:Noise ColorFit Pro 4");
+                System.out.println("Watch Display:1.72INCH  TruView LCD");
+                System.out.println("Watch Display Style:100+ Watch Faces");
+                System.out.println("Watch Mode:100+ Sports Modes, Bluetooth Calling");
+                System.out.println("Watch Price:3,490");
+                System.out.println("Colour:Deep Wine");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Pro 4", "Deep Wine", 3490);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                NoWatch2_NO();
+                break;
+        }
+    }
+}
+
+class NoWatch3 extends NOISE {
+    int opt;
+
+    public void NoWatch3_NO() {
+        Details d = new Details();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Noise ColorFit Pulse Jet Black");
+        System.out.println("Enter 2 for Noise ColorFit Pulse Electric Blue");
+        System.out.println("Enter 3 for Noise ColorFit Pulse Olive Green");
+
+        // Exception handling mechanism
+        try {
+            opt = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+            System.out.println();
+        }
+
+        switch (opt) {
+            case 1:
+                System.out.println("Watch Name:Noise ColorFit Pulse");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:150+ Watch Faces");
+                System.out.println("Watch Mode:60 Sport Mode, Bluetooth Calling, Heart Rate Monitoring");
+                System.out.println("Watch Price:2290");
+                System.out.println("Colour:Jet Black");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Pulse", "Jet Black", 2290);
+                break;
+            case 2:
+                System.out.println("Watch Name:Noise ColorFit Pulse");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:150+ Watch Faces");
+                System.out.println("Watch Mode:60 Sport Mode, Bluetooth Calling, Heart Rate Monitoring");
+                System.out.println("Watch Price:2290");
+                System.out.println("Colour:Electric Blue");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Pulse", "Electric Blue", 2290);
+                break;
+            case 3:
+                System.out.println("Watch Name:Noise ColorFit Pulse");
+                System.out.println("Watch Display:1.69INCH HD");
+                System.out.println("Watch Display Style:150+ Watch Faces");
+                System.out.println("Watch Mode:60 Sport Mode, Bluetooth Calling, Heart Rate Monitoring");
+                System.out.println("Watch Price:2290");
+                System.out.println("Colour:Olive Green");
+                System.out.println();
+                d.Final_Details("Noise ColorFit Pulse", "Olive Green", 2290);
+                break;
+
+            default:
+                System.out.println("Invaild Input ");
+                NoWatch3_NO();
+                break;
+        }
+    }
+}
+
+class Electronics_device {
+    public static void main(String[] args) {
+
+        // Upcasting & Downcasting
+        Phones d1 = new Phones();
+        Phones p = (Phones) d1;
+        System.out.println("Press 1 For Phones");
+
+        Devices D1 = new SmartWatch();
+        SmartWatch w = (SmartWatch) D1;
+        System.out.println("Press 2 For SmartWatch");
+
+        Scanner sc = new Scanner(System.in);
+        int a = 0;
+
+        // Exception handling mechanism
+        try {
+            a = sc.nextInt();
+        } catch (InputMismatchException ie) {
+            System.out.println("The Enter The Valid Input");
+            System.out.println();
+        }
+
+        switch (a) {
+            case 1:
+                System.out.println("You Have Choosen Phone");
+                p.PBrand();
+                break;
+            case 2:
+                System.out.println("You Have Choosen SmartWatch");
+                w.SWatch();
+                break;
+
+            default:
+                System.out.println("Invaild Input :)");
+                System.out.println();
+                main(args);
+                break;
+        }
+    }
+
+    static {
+        System.out.println("Welcome To Our Shope");
+        System.out.println("May I Help You");
+        System.out.println("Which Device Should You Buy??");
+        System.out.println("======================================");
+    }
+}
